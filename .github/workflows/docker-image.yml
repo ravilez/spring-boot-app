@@ -52,7 +52,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
-          port: 8001
+          port: 8888
           script: |
             docker image pull ravilez/spring-boot-app:latest
             docker container stop spring-boot-app
