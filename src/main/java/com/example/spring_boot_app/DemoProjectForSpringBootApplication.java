@@ -11,7 +11,7 @@ public class DemoProjectForSpringBootApplication {
 
 	@RequestMapping("/")
 	public String home() {
-		return "Hello Kubernetes! Github to Docker...please";
+		return "Hello Kubernetes! Github to Docker...please..please\n";
 	}
 
 	public static void main(String[] args) {
