@@ -11,7 +11,7 @@ public class DemoProjectForSpringBootApplication {
 
 	@RequestMapping("/")
 	public String home() {
-		return "Hello Kubernetes! This docker container app was started automatically from a push into Dockerhub after submiting the new soure code to Github";
+		return "Hello Kubernetes! Github to Docker";
 	}
 
 	public static void main(String[] args) {
