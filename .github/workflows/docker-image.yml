@@ -48,10 +48,10 @@ jobs:
 
       - name: deploying and running
         run: |
-          sshpass -p'${{ secrets.SSH_PASSWORD }}' ssh -p8888 -o StrictHostKeyChecking=no ravilez@microspx.ddns.net
+          sshpass -p'${{ secrets.SSH_PASSWORD }}' ssh -p8888 -o StrictHostKeyChecking=no ravilez@microspx.ddns.net <<'ENDSSH'
           echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker pull ravilez/spring-boot-app
-          echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker container stop spring-boot-app
-          echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker container rm spring-boot-app
+          #echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker container stop spring-boot-app
+          #echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker container rm spring-boot-app
           echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker container run -d --name spring-boot-app -p 8000:8000 ravilez/spring-boot-app
-          
+          ENDSSH          
