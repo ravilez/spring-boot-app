@@ -48,7 +48,7 @@ jobs:
 
       - name: deploying and running
         run: |
-          sshpass -p'${{ secrets.SSH_PASSWORD }}' ssh -p8888 -v -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} <<'ENDSSH'
+          sshpass -p'${{ secrets.SSH_PASSWORD }}' ssh -p8888 -v -o StrictHostKeyChecking=no ravilez@microspx.ddns.net <<'ENDSSH'
           docker container stop spring-boot-app
           docker container rm spring-boot-app
           docker container run -d --name spring-boot-app -p 8000:8000 ravilez/spring-boot-app
