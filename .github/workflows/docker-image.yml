@@ -53,4 +53,4 @@ jobs:
           echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker pull ravilez/spring-boot-app
           echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker container stop spring-boot-app
           echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker container rm spring-boot-app
-          echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker container run -d --name spring-boot-app -p 8000:8000 ravilez/spring-boot-app
+          echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker container run -d --name spring-boot-app -p 8080:8080 ravilez/spring-boot-app
