@@ -46,15 +46,9 @@ jobs:
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
 
-      - name: deploying
-        uses: appleboy/ssh-action@v0.1.8
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          port: 8888
-          script: |
-            docker image pull ravilez/spring-boot-app:latest
-            docker container stop spring-boot-app
-            docker container rm spring-boot-app
-            docker container run -d --name spring-boot-app -p 8000:8000 ravilez/spring-boot-app
+      - name: deploying and running
+        run: |
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -p 8888 -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << EOF
+          docker container stop spring-boot-app
+          docker container rm spring-boot-app
+          docker container run -d --name spring-boot-app -p 8000:8000 ravilez/spring-boot-app
