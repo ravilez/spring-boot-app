@@ -52,3 +52,4 @@ jobs:
           docker container stop spring-boot-app
           docker container rm spring-boot-app
           docker container run -d --name spring-boot-app -p 8000:8000 ravilez/spring-boot-app
+          ENDSSH
